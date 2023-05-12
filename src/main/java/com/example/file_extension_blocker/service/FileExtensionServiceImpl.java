@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.file_extension_blocker.controller.dto.AddCustomExtensionRequest;
-import com.example.file_extension_blocker.controller.dto.CheckedDefaultExtensionsRequest;
+import com.example.file_extension_blocker.controller.dto.ChangeCheckedExtensionsRequest;
 import com.example.file_extension_blocker.entity.CustomFileExtension;
 import com.example.file_extension_blocker.entity.DefaultFileExtension;
 import com.example.file_extension_blocker.exception.AlreadyExistCustomExtension;
@@ -66,7 +66,7 @@ public class FileExtensionServiceImpl implements FileExtensionService {
 	}
 
 	@Override
-	public void changeDefaultExtensionChecked(CheckedDefaultExtensionsRequest request) {
+	public void changeDefaultExtensionChecked(ChangeCheckedExtensionsRequest request) {
 		List<DefaultFileExtension> defaultFileExtensions = defaultExtensionRepository.findAll();
 		for (int i=0;i<defaultFileExtensions.size();i++){
 			int finalI = i;

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.file_extension_blocker.controller.dto.AddCustomExtensionRequest;
-import com.example.file_extension_blocker.controller.dto.CheckedDefaultExtensionsRequest;
+import com.example.file_extension_blocker.controller.dto.ChangeCheckedExtensionsRequest;
 import com.example.file_extension_blocker.entity.CustomFileExtension;
 import com.example.file_extension_blocker.entity.DefaultFileExtension;
 import com.example.file_extension_blocker.service.FileExtensionService;
@@ -41,7 +41,7 @@ public class FileExtensionController {
 	}
 
 	@PutMapping ("/default")
-	public String changeDefaultExtensionChecked(@ModelAttribute CheckedDefaultExtensionsRequest requests) {
+	public String changeDefaultExtensionChecked(@ModelAttribute ChangeCheckedExtensionsRequest requests) {
 		fileExtensionService.changeDefaultExtensionChecked(requests);
 		return "file-extension-blocker";
 	}
