@@ -21,35 +21,14 @@
 <h1> ⊙ 파일 확장자 차단</h1>
 <hr style="border: solid 2px;">
 <p style="font-size:20px">파일확장자에 따라 특정 형식의 파일을 첨부하거나 전송하지 못하도록 제한</p>
-고정 확장자
-<div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-    <label class="form-check-label" for="inlineCheckbox1">1</label>
-</div>
-<div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-    <label class="form-check-label" for="inlineCheckbox2">2</label>
-</div>
-<div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option2">
-    <label class="form-check-label" for="inlineCheckbox2">2</label>
-</div>
-<div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option2">
-    <label class="form-check-label" for="inlineCheckbox2">2</label>
-</div>
-<div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="option2">
-    <label class="form-check-label" for="inlineCheckbox2">2</label>
-</div>
-<div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="option2">
-    <label class="form-check-label" for="inlineCheckbox2">2</label>
-</div>
-<div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="option2">
-    <label class="form-check-label" for="inlineCheckbox2">2</label>
-</div>
+    <div>고정 확장자</div>
+    <form th:action="@{/file-extensions/default}"  method="post" th:object="${requests}">
+    <div th:each=" extension, iterStat: ${defaultExtensions}" class="form-check form-check-inline">
+        <label th:text="${extension.name}"  class="form-check-label">.</label>
+        <input class="form-check-input" type="checkbox" th:checked="${extension.checked}" th:value="${extension.name}" th:name="${'names[' + iterStat.index + ']'}">
+    </div>
+        <button type="submit">Submit</button>
+    </form>
 <br>
 <br>
 

@@ -4,8 +4,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 public class DefaultFileExtension {
 
 	@Id
@@ -15,4 +20,13 @@ public class DefaultFileExtension {
 	private String name;
 
 	private Boolean checked;
+
+	public DefaultFileExtension(String name, Boolean checked) {
+		this.name = name;
+		this.checked = checked;
+	}
+
+	public void changeChecked(Boolean checked){
+		this.checked = checked;
+	}
 }

@@ -9,12 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.file_extension_blocker.controller.dto.AddCustomExtensionRequest;
-import com.example.file_extension_blocker.controller.dto.DefaultExtensionRequest;
+import com.example.file_extension_blocker.controller.dto.CheckedDefaultExtensionsRequest;
 import com.example.file_extension_blocker.entity.CustomFileExtension;
 import com.example.file_extension_blocker.entity.DefaultFileExtension;
 import com.example.file_extension_blocker.service.FileExtensionService;
@@ -33,16 +31,17 @@ public class FileExtensionController {
 
 	@GetMapping()
 	public String fileExtensionPage(Model model){
-		List<DefaultFileExtension> checkedDefaultExtension = fileExtensionService.findAllDefaultExtension();
+		List<DefaultFileExtension> defaultExtension = fileExtensionService.findAllDefaultExtension();
 		List<CustomFileExtension> customExtension = fileExtensionService.findAllCustomExtension();
-		model.addAttribute("checkedDefaultExtension",checkedDefaultExtension);
-		model.addAttribute("customExtension",customExtension);
+		model.addAttribute("defaultExtensions",defaultExtension);
+		model.addAttribute("customExtensions",customExtension);
 		return "file-extension-blocker";
 	}
 
-	@PutMapping("/default")
-	public String changeDefaultExtension(@ModelAttribute DefaultExtensionRequest request) {
-		return null;
+	@PutMapping ("/default")
+	public String changeDefaultExtensionChecked(@ModelAttribute CheckedDefaultExtensionsRequest requests) {
+		fileExtensionService.changeDefaultExtensionChecked(requests);
+		return "file-extension-blocker";
 	}
 
 	@PostMapping("/custom")
