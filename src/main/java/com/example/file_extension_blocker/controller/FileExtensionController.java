@@ -47,7 +47,7 @@ public class FileExtensionController {
 
 	@PostMapping("/custom")
 	public String addCustomExtension(@ModelAttribute @Valid AddCustomExtensionRequest request) {
-		fileExtensionService.saveCustomExtension(request.name());
+		fileExtensionService.saveCustomExtension(request);
 		return "file-extension-blocker";
 	}
 

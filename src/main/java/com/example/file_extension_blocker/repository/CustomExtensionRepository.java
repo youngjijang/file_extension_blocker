@@ -8,5 +8,7 @@ import com.example.file_extension_blocker.entity.CustomFileExtension;
 
 public interface CustomExtensionRepository extends JpaRepository<CustomFileExtension, Long> {
 
-	Optional<CustomFileExtension> findByIdAndName(Long id, String name);
+	Integer countAll();
+
+	Boolean existsByName(String name);
 }
