@@ -45,7 +45,7 @@ public class FileExtensionServiceImpl implements FileExtensionService {
 
 	@Override
 	public void saveCustomExtension(AddCustomExtensionRequest request) {
-		if (customExtensionRepository.countAll() >= SAVE_MAX_COUNT){
+		if (customExtensionRepository.countBy() >= SAVE_MAX_COUNT){
 			throw new ExceedMaximumCountException(SAVE_MAX_COUNT);
 		}
 		CustomFileExtension customFileExtension = new CustomFileExtension(request.name());

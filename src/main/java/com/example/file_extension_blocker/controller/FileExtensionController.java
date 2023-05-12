@@ -36,6 +36,7 @@ public class FileExtensionController {
 		List<CustomFileExtension> customExtension = fileExtensionService.findAllCustomExtension();
 		model.addAttribute("defaultExtensions",defaultExtension);
 		model.addAttribute("customExtensions",customExtension);
+		model.addAttribute("customExtensionsCount",customExtension.size());
 		return "file-extension-blocker";
 	}
 
