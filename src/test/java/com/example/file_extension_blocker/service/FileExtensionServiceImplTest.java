@@ -13,10 +13,9 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.file_extension_blocker.controller.dto.AddCustomExtensionRequest;
-import com.example.file_extension_blocker.controller.dto.ChangeCheckedExtensionsRequest;
+import com.example.file_extension_blocker.controller.dto.CheckedExtensionsRequest;
 import com.example.file_extension_blocker.controller.dto.DefaultExtensionRequest;
 import com.example.file_extension_blocker.entity.CustomFileExtension;
-import com.example.file_extension_blocker.entity.DefaultFileExtension;
 import com.example.file_extension_blocker.exception.AlreadyExistCustomExtension;
 import com.example.file_extension_blocker.exception.ExistDefaultFileExtension;
 import com.example.file_extension_blocker.exception.NotFoundCustomException;
@@ -135,8 +134,7 @@ class FileExtensionServiceImplTest {
 	@DisplayName("changeDefaultExtensionChecked 성공")
 	void changeDefaultExtensionChecked() {
 		//given
-		var req = new ChangeCheckedExtensionsRequest(
-			List.of(new DefaultExtensionRequest("bat", true), new DefaultExtensionRequest("com",false), new DefaultExtensionRequest("js",true)));
+		var req = new CheckedExtensionsRequest(List.of("bat","com","js"));
 
 		// when
 		fileExtensionService.changeDefaultExtensionChecked(req);

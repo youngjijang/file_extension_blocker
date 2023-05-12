@@ -4,16 +4,15 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.example.file_extension_blocker.controller.dto.AddCustomExtensionRequest;
-import com.example.file_extension_blocker.controller.dto.ChangeCheckedExtensionsRequest;
+import com.example.file_extension_blocker.controller.dto.CheckedExtensionsRequest;
 import com.example.file_extension_blocker.entity.CustomFileExtension;
 import com.example.file_extension_blocker.entity.DefaultFileExtension;
 import com.example.file_extension_blocker.service.FileExtensionService;
@@ -40,21 +39,21 @@ public class FileExtensionController {
 		return "file-extension-blocker";
 	}
 
-	@PutMapping ("/default")
-	public String changeDefaultExtensionChecked(@ModelAttribute ChangeCheckedExtensionsRequest requests) {
+	@PostMapping ("/default")
+	public RedirectView changeDefaultExtensionChecked(@ModelAttribute CheckedExtensionsRequest requests) {
 		fileExtensionService.changeDefaultExtensionChecked(requests);
-		return "file-extension-blocker";
+		return new RedirectView("/file-extensions");
 	}
 
 	@PostMapping("/custom")
-	public String addCustomExtension(@ModelAttribute @Valid AddCustomExtensionRequest request) {
+	public RedirectView addCustomExtension(@ModelAttribute @Valid AddCustomExtensionRequest request) {
 		fileExtensionService.saveCustomExtension(request);
-		return "file-extension-blocker";
+		return new RedirectView("/file-extensions");
 	}
 
-	@DeleteMapping("/custom/{customExtensionId}")
-	public String removeCustomExtension(@PathVariable Long customExtensionId) {
-		fileExtensionService.removeCustomExtension(customExtensionId);
-		return "file-extension-blocker";
+	@PostMapping("/custom/{extensionId}")
+	public RedirectView removeCustomExtension(@PathVariable Long extensionId) {
+		fileExtensionService.removeCustomExtension(extensionId);
+		return new RedirectView("/file-extensions");
 	}
 }
