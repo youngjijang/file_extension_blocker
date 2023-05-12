@@ -48,7 +48,10 @@ Thymeleaf<br>
 **개선 사항**
 - 화면 호출이 익숙치않아 layer를 완벽하게 구현하지 못하였습니다.
 - 현재 check box 선택 후 고정버튼을 눌러야 고정이 되도록 구현되었지만 별도의 버튼없이 check를 한 즉시 이벤트를 통해 db에 저장되도록 개선할 예정입니다.
+<br>
 
-### 화면 구성
+### 🖥️ 화면 구성
 
 ---
+<img width="760" alt="스크린샷 2023-05-13 오전 4 56 00" src="https://github.com/youngjijang/file_extension_blocker/assets/100327413/01864d32-bf26-4379-9f45-68998dfc4f4d">
+
