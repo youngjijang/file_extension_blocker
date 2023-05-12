@@ -14,7 +14,7 @@ public interface FileExtensionService {
 
 	void saveCustomExtension(String fileExtension);
 
-	void removeCustomExtension(String fileExtension);
+	void removeCustomExtension(Long customExtensionId);
 
-	void changeDefaultExtensionChecked(CheckedDefaultExtensionsRequest defaultExtensions);
+	void changeDefaultExtensionChecked(CheckedDefaultExtensionsRequest request);
 }

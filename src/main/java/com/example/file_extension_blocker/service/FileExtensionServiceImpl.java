@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.file_extension_blocker.controller.dto.CheckedDefaultExtensionsRequest;
 import com.example.file_extension_blocker.entity.CustomFileExtension;
 import com.example.file_extension_blocker.entity.DefaultFileExtension;
+import com.example.file_extension_blocker.exception.NotFoundCustomException;
 import com.example.file_extension_blocker.repository.CustomExtensionRepository;
 import com.example.file_extension_blocker.repository.DefaultExtensionRepository;
 
@@ -49,11 +50,9 @@ public class FileExtensionServiceImpl implements FileExtensionService {
 	}
 
 	@Override
-	public void removeCustomExtension(String fileExtensionName) {
-		// 있는지
-		CustomFileExtension customFileExtension = customExtensionRepository.findByIdAndName(1L, fileExtensionName)
-			.orElseThrow();
-		// 삭제
+	public void removeCustomExtension(Long extensionId) {
+		CustomFileExtension customFileExtension = customExtensionRepository.findById(extensionId)
+			.orElseThrow(NotFoundCustomException::new);
 		customExtensionRepository.delete(customFileExtension);
 	}
 
