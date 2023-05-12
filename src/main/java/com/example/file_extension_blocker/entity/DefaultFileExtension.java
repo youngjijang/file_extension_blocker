@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
@@ -14,9 +15,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "default_file_extensions")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class DefaultFileExtension {
+public class DefaultFileExtension extends BaseTimeColumn{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,15 +1,21 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/cat
+    url: jdbc:mysql://localhost:3306/file_extension_blocker
     username: root
-    password: root
+    password:
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
     properties:
       hibernate:
         format_sql: true
+    defer-datasource-initialization: true
+  sql:
+    init:
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:data.sql
+      mode: always
 
 ---
 spring:
@@ -25,7 +31,7 @@ spring:
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: none
     show-sql: true
     properties:
       hibernate.format_sql: true
