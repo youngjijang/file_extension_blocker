@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.file_extension_blocker.controller.dto.AddCustomExtensionRequest;
 import com.example.file_extension_blocker.controller.dto.CheckedExtensionsRequest;
-import com.example.file_extension_blocker.controller.dto.DefaultExtensionRequest;
 import com.example.file_extension_blocker.entity.CustomFileExtension;
 import com.example.file_extension_blocker.exception.AlreadyExistCustomExtension;
 import com.example.file_extension_blocker.exception.ExistDefaultFileExtension;
